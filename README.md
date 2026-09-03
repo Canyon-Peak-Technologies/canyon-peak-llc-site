@@ -1,7 +1,7 @@
 # Canyon Peak Holdings — corporate site
 
 Static marketing and policy site for **Canyon Peak Holdings Inc.** and its subsidiaries,
-Canyon Peak Technologies, LLC and Canyon Peak, LLC. Hosted on Cloudflare and served at
+Canyon Peak Technologies, LLC and Canyon Peak, LLC (which owns FinishAtlas, LLC). Hosted on Cloudflare and served at
 <https://www.canyonpeak.co>.
 
 ## Pages
