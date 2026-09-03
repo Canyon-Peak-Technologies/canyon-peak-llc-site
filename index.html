@@ -2,375 +2,432 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Canyon Peak, LLC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #0f172a;
-      --bg-light: #111827;
-      --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.1);
-      --text-main: #e5e7eb;
-      --text-muted: #9ca3af;
-      --card-bg: #020617;
-      --border-subtle: #1f2937;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: radial-gradient(circle at top, #111827, #020617 55%);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .page-wrap {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-      width: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 20px;
-      border-radius: 16px;
-      background: linear-gradient(
-        135deg,
-        rgba(15, 23, 42, 0.8),
-        rgba(15, 23, 42, 0.4)
-      );
-      border: 1px solid rgba(148, 163, 184, 0.3);
-      backdrop-filter: blur(12px);
-    }
-
-    .brand {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .brand h1 {
-      font-size: clamp(1.5rem, 3vw, 1.9rem);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .brand span {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .tagline {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      max-width: 320px;
-      text-align: right;
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .intro {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: flex-start;
-      justify-content: space-between;
-    }
-
-    .intro-text {
-      max-width: 600px;
-    }
-
-    .intro-text h2 {
-      font-size: 1.3rem;
-      margin-bottom: 6px;
-    }
-
-    .intro-text p {
-      font-size: 0.96rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .pill-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 18px;
-    }
-
-    @media (min-width: 768px) {
-      .services-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .service-card {
-      position: relative;
-      background: radial-gradient(circle at top left, #111827, #020617);
-      border-radius: 20px;
-      padding: 18px 18px 20px;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at top right,
-        rgba(34, 197, 94, 0.09),
-        transparent 55%
-      );
-      pointer-events: none;
-    }
-
-    .service-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    .service-title-block {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .service-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    .service-subtitle {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .status-badge {
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      white-space: nowrap;
-    }
-
-    .status-badge.coming-soon {
-      border-color: rgba(34, 197, 94, 0.6);
-      background: var(--accent-soft);
-      color: #bbf7d0;
-    }
-
-    .service-body {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .service-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 8px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .chip {
-      padding: 3px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(55, 65, 81, 0.9);
-      font-size: 0.74rem;
-      background: rgba(15, 23, 42, 0.7);
-    }
-
-    .logo-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 6px;
-      padding: 8px 10px;
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px dashed rgba(148, 163, 184, 0.4);
-    }
-
-    .logo-wrap img {
-      max-width: 160px;
-      height: auto;
-      display: block;
-    }
-
-    footer {
-      padding: 16px;
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(31, 41, 55, 0.8);
-      background: rgba(3, 7, 18, 0.9);
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <title>Canyon Peak Holdings</title>
+  <meta name="description" content="Canyon Peak Holdings Inc. is the Utah parent company of Canyon Peak Technologies and Canyon Peak, LLC — building property-operations software, consumer apps, and practical IT advisory." />
+  <link rel="canonical" href="https://www.canyonpeak.co/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Canyon Peak Holdings" />
+  <meta property="og:description" content="Parent company of Canyon Peak Technologies and Canyon Peak, LLC. Property-operations software, consumer apps, and IT advisory from Utah." />
+  <meta property="og:url" content="https://www.canyonpeak.co/" />
+  <meta property="og:image" content="https://www.canyonpeak.co/assets/brand/mark-holdings-512.png" />
+  <meta name="theme-color" content="#1d2d3d" />
+  <link rel="icon" href="/assets/brand/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/brand/mark-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/brand/mark-180.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="/assets/css/site.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Canyon Peak Holdings Inc.",
+    "alternateName": "Canyon Peak Holdings",
+    "url": "https://www.canyonpeak.co/",
+    "logo": "https://www.canyonpeak.co/assets/brand/mark-holdings-512.png",
+    "email": "info@canyonpeak.co",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "7533 S Center View Ct #8104",
+      "addressLocality": "West Jordan",
+      "addressRegion": "UT",
+      "postalCode": "84084",
+      "addressCountry": "US"
+    },
+    "subOrganization": [
+      { "@type": "Organization", "name": "Canyon Peak Technologies, LLC" },
+      { "@type": "Organization", "name": "Canyon Peak, LLC" }
+    ]
+  }
+  </script>
 </head>
 <body>
-  <div class="page-wrap">
-    <header>
-      <div class="brand">
-        <h1>Canyon Peak, LLC</h1>
-        <span>Focused, modern services under one umbrella.</span>
-      </div>
-      <div class="tagline">
-        <div class="pill">
-          <span class="pill-dot"></span>
-          <span>IT solutions &amp; laundry services for the real world.</span>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="lockup holdings" href="/" aria-label="Canyon Peak Holdings — home">
+        <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <mask id="mh" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+            <rect width="100" height="100" fill="#fff"/>
+            <polyline points="18.5,90 50,32 81.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+            <polyline points="30.5,90 50,54 69.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+            <polyline points="40,90 50,72 60,90" fill="none" stroke="#000" stroke-width="4.5"/>
+          </mask>
+          <path d="M50 6 L96 90 L4 90 Z" fill="#424244" mask="url(#mh)"/>
+        </svg>
+        <span class="words"><span class="wordmark">Canyon Peak</span><span class="descriptor">Holdings</span></span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="#companies">Companies</a>
+        <a href="#products">Products</a>
+        <a href="#policies">Policies</a>
+        <a class="cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero reversed">
+      <div class="wrap">
+        <div>
+          <span class="kicker">Canyon Peak Holdings Inc. &nbsp;·&nbsp; West Jordan, Utah</span>
+          <h1>Practical software and services, built to last.</h1>
+          <p class="lede">
+            Canyon Peak Holdings is the parent company of Canyon Peak Technologies and
+            Canyon Peak, LLC. Together we build property-operations software, thoughtful
+            consumer apps, and hands-on IT advisory for organizations that value doing
+            things properly.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#companies">Our companies</a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div class="contour" aria-hidden="true">
+          <!-- Reversed contour mark, Holdings colourway (no summit cap) -->
+          <svg viewBox="0 0 100 100" focusable="false">
+            <mask id="hero-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+              <rect width="100" height="100" fill="#fff"/>
+              <polyline points="18.5,90 50,32 81.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+              <polyline points="30.5,90 50,54 69.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+              <polyline points="40,90 50,72 60,90" fill="none" stroke="#000" stroke-width="4.5"/>
+            </mask>
+            <path d="M50 6 L96 90 L4 90 Z" fill="#f2f2f3" mask="url(#hero-mask)"/>
+          </svg>
         </div>
       </div>
-    </header>
+    </section>
 
-    <main>
-      <section class="intro">
-        <div class="intro-text">
-          <h2>Portfolio Companies</h2>
+    <!-- Companies -->
+    <section id="companies">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">The family</span>
+          <h2>One parent. Two operating companies.</h2>
           <p>
-            Canyon Peak, LLC operates multiple service lines built around
-            practical, day-to-day needs — from information technology to
-            community laundry services.
+            Canyon Peak Holdings Inc. is a Utah corporation that owns and directs the group.
+            Day-to-day work happens in the subsidiaries, each with a clear remit.
           </p>
         </div>
-      </section>
 
-      <section class="services-grid">
-        <!-- GX Consulting Card -->
-        <article class="service-card">
-          <div class="service-header">
-            <div class="service-title-block">
-              <div class="service-title">GX Consulting</div>
-              <div class="service-subtitle">IT Solutions &amp; Advisory</div>
+        <div class="structure">
+          <div class="parent">
+            <svg class="entity-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+              <mask id="mp" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+                <rect width="100" height="100" fill="#fff"/>
+                <polyline points="18.5,90 50,32 81.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                <polyline points="30.5,90 50,54 69.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                <polyline points="40,90 50,72 60,90" fill="none" stroke="#000" stroke-width="4.5"/>
+              </mask>
+              <path d="M50 6 L96 90 L4 90 Z" fill="#f2f2f3" mask="url(#mp)"/>
+            </svg>
+            <div>
+              <div class="entity-name">Canyon Peak Holdings Inc.</div>
+              <div class="entity-role">Parent company</div>
             </div>
-            <span class="status-badge">Active</span>
+            <div class="entity-meta">Utah domestic corporation<br />Governance, capital, and shared policy</div>
           </div>
-          <div class="service-body">
-            GX Consulting delivers practical IT solutions, including
-            infrastructure planning, security guidance, and governance / risk /
-            compliance (GRC) support tailored to growing organizations.
+
+          <div class="branches">
+            <article class="card">
+              <div class="card-top">
+                <div style="display:flex;gap:14px;align-items:center">
+                  <svg class="entity-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                    <mask id="mt" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+                      <rect width="100" height="100" fill="#fff"/>
+                      <polyline points="18.5,90 50,32 81.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                      <polyline points="30.5,90 50,54 69.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                      <polyline points="40,90 50,72 60,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                    </mask>
+                    <path d="M50 6 L96 90 L4 90 Z" fill="#1d1f20" mask="url(#mt)"/>
+                    <path d="M50 6 L60.5 25 L39.5 25 Z" fill="#5980a6"/>
+                  </svg>
+                  <div>
+                    <div class="entity-name">Canyon Peak Technologies</div>
+                    <div class="entity-role">Software &amp; platforms</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>
+                  Designs, builds, and operates our software products, from the PremLogix
+                  property-operations platform to native apps for iPhone and iPad. Security,
+                  data classification, and a documented development lifecycle come standard.
+                </p>
+              </div>
+              <div class="card-foot">
+                <div class="chips">
+                  <span class="chip">SaaS platforms</span>
+                  <span class="chip">iOS apps</span>
+                  <span class="chip">Cloud operations</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-top">
+                <div style="display:flex;gap:14px;align-items:center">
+                  <svg class="entity-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                    <mask id="ml" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+                      <rect width="100" height="100" fill="#fff"/>
+                      <polyline points="18.5,90 50,32 81.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                      <polyline points="30.5,90 50,54 69.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                      <polyline points="40,90 50,72 60,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                    </mask>
+                    <path d="M50 6 L96 90 L4 90 Z" fill="#1d1f20" mask="url(#ml)"/>
+                  </svg>
+                  <div>
+                    <div class="entity-name">Canyon Peak, LLC</div>
+                    <div class="entity-role">Services &amp; ventures</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>
+                  Our services and operating arm. Through <strong>GX Consulting</strong> it
+                  delivers practical IT solutions: infrastructure planning, security guidance,
+                  and governance, risk, and compliance (GRC) support for growing organizations.
+                  It also operates the Finish Atlas storefront.
+                </p>
+              </div>
+              <div class="card-foot">
+                <div class="chips">
+                  <span class="chip">IT strategy</span>
+                  <span class="chip">Security &amp; GRC</span>
+                  <span class="chip">Infrastructure</span>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="service-footer">
-            <div class="chip-row">
-              <span class="chip">IT Strategy</span>
-              <span class="chip">Security &amp; GRC</span>
-              <span class="chip">Infrastructure</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Products</span>
+          <h2>What we're building.</h2>
+          <p>
+            A small portfolio, deliberately chosen. Each product is designed to collect as
+            little personal data as it can and to be honest about what it does collect.
+          </p>
+        </div>
+
+        <div class="grid grid-2">
+          <article class="card product">
+            <div class="card-top">
+              <div>
+                <div class="product-name">PremLogix</div>
+                <div class="product-tag">Property Operations Platform</div>
+              </div>
+              <span class="badge dev">In development</span>
             </div>
-            <div>Contact: <a href="mailto:info@canyonpeakllc.com">info@canyonpeak.co</a></div>
-          </div>
-        </article>
-
-        <!-- CleanCycle Card -->
-        <article class="service-card">
-          <div class="service-header">
-            <div class="service-title-block">
-              <div class="service-title">CleanCycle Wash &amp; Dry</div>
-              <div class="service-subtitle">Modern Laundry Services</div>
+            <div class="card-body">
+              <p>
+                A secure, multi-tenant platform for property managers, independent landlords,
+                and community operators: billing and payments, leases, maintenance,
+                inspections, reporting, and a self-service resident portal. Built by
+                Canyon Peak Technologies and hosted on Microsoft Azure.
+              </p>
             </div>
-            <span class="status-badge coming-soon">Coming Soon</span>
-          </div>
-          <div class="service-body">
-            CleanCycle will bring a modern, tech-enabled laundromat experience to
-            the community, with high-efficiency machines, wash &amp; fold, and
-            app-driven convenience for busy households.
-          </div>
-
-          <div class="logo-wrap">
-            <!-- Replace the src below with the actual path to your CleanCycle logo file -->
-            <img src="cleancycle-logo.png" alt="CleanCycle Wash &amp; Dry Logo" />
-          </div>
-
-          <div class="service-footer">
-            <div class="chip-row">
-              <span class="chip">Self-Service Laundry</span>
-              <span class="chip">Wash &amp; Fold</span>
-              <span class="chip">Pickup &amp; Delivery</span>
+            <div class="card-foot">
+              <span class="platforms">Web · B2B SaaS</span>
+              <span class="small muted">Closed beta planned</span>
             </div>
-            <div>Opening: To be announced</div>
-          </div>
-        </article>
-      </section>
-    </main>
-  </div>
+          </article>
 
-  <footer>
-    &copy; <span id="year"></span> Canyon Peak, LLC. All rights reserved.
+          <article class="card product">
+            <div class="card-top">
+              <div>
+                <div class="product-name">Finish Atlas</div>
+                <div class="product-tag">Route art prints from your GPX</div>
+              </div>
+              <span class="badge dev">Launch preview</span>
+            </div>
+            <div class="card-body">
+              <p>
+                Turn a race, ride, or hike into a made-to-order framed print or poster.
+                Upload a GPX file and the artwork is drawn entirely in your browser; your
+                route never leaves your device. Operated by Canyon Peak, LLC.
+              </p>
+            </div>
+            <div class="card-foot">
+              <span class="platforms">Web · Consumer</span>
+              <a href="https://finishatlas.com" rel="noopener">finishatlas.com &rarr;</a>
+            </div>
+          </article>
+
+          <article class="card product">
+            <div class="card-top">
+              <div>
+                <div class="product-name">Duskbloom</div>
+                <div class="product-tag">A quiet light-and-space puzzle</div>
+              </div>
+              <span class="badge dev">Coming to the App Store</span>
+            </div>
+            <div class="card-body">
+              <p>
+                An original puzzle game for iPhone and iPad with no timers, lives, streaks,
+                or paid hints. Progress stays on your device. A one-time purchase unlocks the
+                full game with Family Sharing.
+              </p>
+            </div>
+            <div class="card-foot">
+              <span class="platforms">iOS · iPadOS</span>
+            </div>
+          </article>
+
+          <article class="card product">
+            <div class="card-top">
+              <div>
+                <div class="product-name">Workout App</div>
+                <div class="product-tag">Training planner powered by Apple Health</div>
+              </div>
+              <span class="badge dev">In development</span>
+            </div>
+            <div class="card-body">
+              <p>
+                Plans your training week, reads the Health data you choose to share, and
+                turns your logs into clear analysis. Everything is processed on your iPhone.
+                It is a wellness tool, not a medical device.
+              </p>
+            </div>
+            <div class="card-foot">
+              <span class="platforms">iOS</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Policies -->
+    <section id="policies" class="policy-band">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Trust &amp; policies</span>
+          <h2>How we handle your information.</h2>
+          <p>
+            One set of policies covers every Canyon Peak company, app, and website. They are
+            written to meet Apple App Store, Google Play, and carrier messaging (Twilio and
+            CTIA) requirements.
+          </p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card">
+            <h3><a href="/privacy.html">Privacy Policy <span class="arrow">&rarr;</span></a></h3>
+            <div class="card-body">
+              <p>
+                What we collect, why, who we share it with, how long we keep it, and how to
+                exercise your rights. Includes product-specific sections for PremLogix,
+                Finish Atlas, Duskbloom, and Workout App.
+              </p>
+            </div>
+            <div class="card-foot"><span class="small muted">Effective September 3, 2026</span></div>
+          </article>
+          <article class="card">
+            <h3><a href="/sms-policy.html">SMS &amp; Email Messaging Policy <span class="arrow">&rarr;</span></a></h3>
+            <div class="card-body">
+              <p>
+                The terms for text and email messages from Canyon Peak products: how you
+                opt in, how to stop (reply <strong>STOP</strong>), how to get help (reply
+                <strong>HELP</strong>), message frequency, and what we will never do with
+                your number.
+              </p>
+            </div>
+            <div class="card-foot"><span class="small muted">Effective September 3, 2026</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <span class="kicker">Contact</span>
+          <h2>Talk to us.</h2>
+          <p class="muted" style="margin-top:14px">
+            For business inquiries, GX Consulting engagements, product questions, privacy
+            requests, or press, email us and a person will reply. We are based in Utah and
+            work on Mountain Time.
+          </p>
+          <p style="margin-top:24px"><a class="btn btn-dark" href="mailto:info@canyonpeak.co">info@canyonpeak.co</a></p>
+        </div>
+        <ul class="contact-list">
+          <li>
+            <span class="label">Mailing address</span>
+            <address>Canyon Peak Holdings Inc.<br />7533 S Center View Ct #8104<br />West Jordan, UT 84084<br />United States</address>
+          </li>
+          <li>
+            <span class="label">Privacy &amp; data requests</span>
+            <a href="mailto:info@canyonpeak.co?subject=Privacy%20request">info@canyonpeak.co</a> with the subject line "Privacy request"
+          </li>
+          <li>
+            <span class="label">Finish Atlas support</span>
+            <a href="mailto:support@finishatlas.com">support@finishatlas.com</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a class="lockup reversed" href="/" aria-label="Canyon Peak Holdings — home">
+            <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+              <mask id="mf" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+                <rect width="100" height="100" fill="#fff"/>
+                <polyline points="18.5,90 50,32 81.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                <polyline points="30.5,90 50,54 69.5,90" fill="none" stroke="#000" stroke-width="4.5"/>
+                <polyline points="40,90 50,72 60,90" fill="none" stroke="#000" stroke-width="4.5"/>
+              </mask>
+              <path d="M50 6 L96 90 L4 90 Z" fill="#f2f2f3" mask="url(#mf)"/>
+            </svg>
+            <span class="words"><span class="wordmark">Canyon Peak</span><span class="descriptor">Holdings</span></span>
+          </a>
+          <p style="margin-top:18px">
+            Canyon Peak Holdings Inc. is the parent company of Canyon Peak Technologies, LLC
+            and Canyon Peak, LLC. PremLogix, Finish Atlas, and Duskbloom are trademarks or
+            working names of Canyon Peak companies.
+          </p>
+        </div>
+        <div>
+          <h4>Companies &amp; products</h4>
+          <ul>
+            <li><a href="#companies">Canyon Peak Technologies</a></li>
+            <li><a href="#companies">Canyon Peak, LLC · GX Consulting</a></li>
+            <li><a href="#products">PremLogix</a></li>
+            <li><a href="https://finishatlas.com" rel="noopener">Finish Atlas</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/sms-policy.html">SMS &amp; Email Messaging Policy</a></li>
+            <li><a href="mailto:info@canyonpeak.co">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span data-year>2026</span> Canyon Peak Holdings Inc. All rights reserved.</span>
+        <span>West Jordan, Utah</span>
+      </div>
+    </div>
   </footer>
 
-  <script>
-    // Set current year in footer
-    document.getElementById("year").textContent =
-      new Date().getFullYear().toString();
-  </script>
+  <script src="/assets/js/site.js"></script>
 </body>
 </html>

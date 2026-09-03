@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="32" height="32">
+  <title>Canyon Peak — Contour mark</title>
+  <mask id="cut32" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+    <rect width="100" height="100" fill="#fff"></rect>
+    <polyline points="22,90 50,38 78,90" fill="none" stroke="#000" stroke-width="7"></polyline>
+  </mask>
+  <path d="M50 6 L96 90 L4 90 Z" fill="#1d1f20" mask="url(#cut32)"></path>
+  <path d="M50 6 L61 26 L39 26 Z" fill="#5980a6"></path>
+</svg>
