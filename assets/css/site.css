@@ -384,3 +384,12 @@ section + section { border-top: 1px solid var(--rule); }
   .doc-layout { display: block; }
   a { color: inherit; }
 }
+
+/* Emberfall product page */
+.emberfall-hero h1 { max-width: 18ch; }
+.emberfall-hero .release-note { margin-top: 22px; color: var(--steel-300); }
+.emberfall-shot { margin: 0; text-align: center; }
+.emberfall-shot img { display: block; width: min(100%, 290px); height: auto; margin: auto; border-radius: 20px; }
+.emberfall-shot figcaption { margin-top: 12px; color: var(--steel-300); font-size: 0.9rem; }
+.emberfall-note { margin-top: 24px; }
+#support { scroll-margin-top: 72px; }

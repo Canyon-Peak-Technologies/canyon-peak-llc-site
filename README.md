@@ -9,6 +9,7 @@ Canyon Peak Technologies, LLC and Canyon Peak, LLC (which owns FinishAtlas, LLC)
 | Path | Purpose |
 |---|---|
 | `index.html` | Home: company structure, products, policy links, contact |
+| `emberfall.html` | Emberfall product overview, support, and privacy links |
 | `privacy.html` | Privacy Policy (Apple App Store, Google Play, and Twilio requirements) |
 | `sms-policy.html` | SMS & Email Messaging Policy (Twilio / CTIA / TCPA / CAN-SPAM) |
 | `404.html` | Not-found page (Cloudflare Pages serves this automatically) |
